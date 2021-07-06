@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>WordWar 0.1</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+</head>
+
+<body>
+    <div class="mainBody">
+        <div class="mainTemplet">
+            <!-- <main>
+                <div class="suggestion-box">
+                  <div class="suggestion-input" id="suggestion-input">
+                    <input type="text" id="suggestions" placeholder="Search any country..."/>
+                    <span class="loader"></span>
+                    <button id="reset"></button>
+                  </div>
+                  <div class="suggestion-list" id="suggestion-list"></div>
+                </div>
+              </main>               -->
+              <form action="/searchWord" class="search-container" method="post">
+                {%csrf_token%}
+                <input type="text" id="search-bar" name="wordTitle" placeholder="What can I help you with today?">
+                <a><img class="search-icon" type="submit" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
+                <input class="search-icon" value="Submit" type="submit">
+                <!-- <div style="margin-top: 10px;">
+                    <input value="Submit" type="submit" class="btn-2">
+                </div> -->
+            </form>
+        </div>
+    </div>
+    <!-- git update 2 -->
+
+    <!-- <script src="./config.js"></script> -->
+   <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+</body>
+
+</html>
