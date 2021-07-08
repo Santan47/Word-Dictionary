@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>WordWar 0.1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
 </head>
 
@@ -23,14 +24,10 @@
                   <div class="suggestion-list" id="suggestion-list"></div>
                 </div>
               </main>               -->
-              <form action="/searchWord" class="search-container" method="post">
+              <form action="/searchWord" class="searchForm search-container" method="post">
                 {%csrf_token%}
-                <input type="text" id="search-bar" name="wordTitle" placeholder="What can I help you with today?">
-                <a><img class="search-icon" type="submit" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
-                <input class="search-icon" value="Submit" type="submit">
-                <!-- <div style="margin-top: 10px;">
-                    <input value="Submit" type="submit" class="btn-2">
-                </div> -->
+                  <input class="searchBox" type="text" placeholder="Search.." name="wordTitle">
+                  <button class="sub" type="submit"><i class="fa fa-search"></i></button>
             </form>
         </div>
     </div>
