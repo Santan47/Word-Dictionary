@@ -24,6 +24,10 @@
                   <div class="suggestion-list" id="suggestion-list"></div>
                 </div>
               </main>               -->
+              <div class="titleBox">
+                <div class="textDict">Dictionary</div>
+                <img src="{% static 'assets/searchingMan.png' %}" alt="Trulli" width="70" height="70">
+              </div>
               <form action="/searchWord" class="searchForm search-container" method="post">
                 {%csrf_token%}
                   <input class="searchBox" type="text" placeholder="Search.." name="wordTitle">

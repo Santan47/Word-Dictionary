@@ -16,6 +16,19 @@
     align-items: center;
   }
 
+  .titleBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+  }
+
+  .textDict{
+    color: darkblue;
+    font-size: 34px;
+    letter-spacing: 2px;
+  }
+
   .searchBox{
     height: 32px;
     width: 40%;
