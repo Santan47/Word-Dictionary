@@ -30,9 +30,50 @@
               </div>
               <form action="/searchWord" class="searchForm search-container" method="post">
                 {%csrf_token%}
-                  <input class="searchBox" type="text" placeholder="Search.." name="wordTitle">
+                  <input class="searchBox" type="text" placeholder="Enter your word.." name="wordTitle">
                   <button class="sub" type="submit"><i class="fa fa-search"></i></button>
-            </form>
+              </form>
+
+              <div class="mainDics">
+                <div class="wordDetails">
+                  <div>
+                    <div class="wordAudio">
+                      <div class="WordSearchTitle">{{wordDetail.word}}</div>
+                      <!-- <div><a href="{{wordDetail.phonetics[0]['audio']}" target="_blank"><img src="{% static 'assets/sound.png' %}" alt="Trulli" width="20" height="20"></a></div> -->
+                    </div>
+                    <!-- <div style="color: grey;">{{wordDetail.phonetics.["text"]}}</div> -->
+                    <!-- meanings -->
+                    <div style="margin-top: 20px;">
+                      <!-- // for loop for part of speech -->
+                      {% for defData in wordDetail.meanings%}
+                      <div>
+                        <div style="margin: 10px 0px;">
+                          <span style="padding:5px 10px; background: green;width:auto;">{{defData.partOfSpeech}}</span>
+                        </div>
+                        
+                        {% for wordMeaningData in wordDetail.meanings.definitions%}
+                        <div style="padding:5px 10px; background: rgb(127, 231, 179);">
+                          <!-- // for loop for defination -->
+                          <!-- loop -->
+                          <div style="padding:5px 10px; background: rgb(127, 169, 231);margin: 10px 0px;">
+                            <div>Definations:-</div>
+                            <div>{{wordMeaningData.definition}}</div>
+                          </div>
+                          <div style="padding:5px 10px; background: rgb(207, 127, 231);margin: 10px 0px;">
+                            <div>Expample:- </div>
+                          <div>{{wordMeaningData.example}}</div>
+                          </div>
+                          
+                          <!-- end loop -->
+                        </div>
+                        {% endfor %}
+                      </div>
+                      {% endfor %}
+                      <!-- end loop -->
+                    </div>
+                  </div>
+                </div>
+              </div>
         </div>
     </div>
     <!-- git update 2 -->

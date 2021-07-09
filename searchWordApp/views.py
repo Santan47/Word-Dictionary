@@ -20,4 +20,4 @@ def searchWord(request):
     response = urllib.request.urlopen(url)
     data = json.loads(response.read())
     print(data)
-    return redirect("/index.html");
+    return render(request, "index.html", {"wordDetail": data[0]})
