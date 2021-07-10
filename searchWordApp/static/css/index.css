@@ -78,4 +78,17 @@
     text-decoration: underline;
     padding: 0px 10px 0px 0px;
   }
+.partofspeech{
+  padding: 5px 10px;
+  background: blueviolet;
+  width: auto;
+  border-radius: 5px;
+  color: white;
+}
 
+.definationBlock{
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: rgb(127, 231, 179);
+  margin-bottom: 10px;
+}

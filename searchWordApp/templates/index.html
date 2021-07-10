@@ -39,20 +39,22 @@
                   <div>
                     <div class="wordAudio">
                       <div class="WordSearchTitle">{{wordDetail.word}}</div>
-                      <!-- <div><a href="{{wordDetail.phonetics[0]['audio']}" target="_blank"><img src="{% static 'assets/sound.png' %}" alt="Trulli" width="20" height="20"></a></div> -->
+                      {% for phoneticsData in wordDetail.phonetics%}
+                        <div><a href="{{phoneticsData.audio}}" target="_blank"><img src="{% static 'assets/sound.png' %}" alt="Trulli" width="20" height="20"></a></div>
                     </div>
-                    <!-- <div style="color: grey;">{{wordDetail.phonetics.["text"]}}</div> -->
+                    <div style="color: grey;">{{phoneticsData.text}}</div>
+                    {% endfor %}
                     <!-- meanings -->
-                    <div style="margin-top: 20px;">
+                    <div style="margin-top: 10px;">
                       <!-- // for loop for part of speech -->
                       {% for defData in wordDetail.meanings%}
                       <div>
                         <div style="margin: 10px 0px;">
-                          <span style="padding:5px 10px; background: green;width:auto;">{{defData.partOfSpeech}}</span>
+                          <span class="partofspeech">{{defData.partOfSpeech}}</span>
                         </div>
                         
-                        {% for wordMeaningData in wordDetail.meanings.definitions%}
-                        <div style="padding:5px 10px; background: rgb(127, 231, 179);">
+                        {% for wordMeaningData in defData.definitions%}
+                        <div class="definationBlock">
                           <!-- // for loop for defination -->
                           <!-- loop -->
                           <div style="padding:5px 10px; background: rgb(127, 169, 231);margin: 10px 0px;">
