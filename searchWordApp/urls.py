@@ -7,7 +7,6 @@ from django.http import HttpResponse
 
 
 
-
 urlpatterns = [
     path('', myview.index,name='index'),
     path('searchWord', myview.searchWord, name='searchWord'),

@@ -36,6 +36,7 @@
 
               <div class="mainDics">
                 <div class="wordDetails">
+                  {% if wordDetail %}
                   <div>
                     <div class="wordAudio">
                       <div class="WordSearchTitle">{{wordDetail.word}}</div>
@@ -74,6 +75,18 @@
                       <!-- end loop -->
                     </div>
                   </div>
+                  {% elif wordError%}
+                  <div class="userMsg">
+                    <div class="infotext"> Sorry! We couldn't find the word. Please try again.</div> 
+                  </div>
+                  {% else %}
+                  <div class="userMsg">
+                    <div class="infotext">
+                      Please type your word in <span style="color: rgb(0, 104, 14);">searchBox</span>.This dictionary contain millions of word it will give you all information regarding the word with <span style="color: blue;">Phonetics</span>,<span style="color: rgb(19, 133, 85);">Pronunciation</span>,<span style="color: rgb(83, 92, 9);">Defination</span>
+                      ,and&nbsp;<span style="color: rgb(252, 155, 9);"> Examples.</span>  
+                    </div> 
+                  </div>
+                  {% endif %}
                 </div>
               </div>
         </div>

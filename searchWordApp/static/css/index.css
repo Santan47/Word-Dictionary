@@ -1,11 +1,9 @@
-
-
-  .hide{
+.hide{
     display: none;
   }
   
   body {
-    font-family: Arial;
+    font-family: monospace;
     background-color: antiquewhite;
   }
   .searchForm{
@@ -34,7 +32,7 @@
     height: 32px;
     width: 40%;
     padding: 5px 5px;
-    font-size: 16px;
+    font-family: monospace;
     border-radius: 5px 0px 0px 5px;
     border: 1px solid grey;
     border-right: none;
@@ -62,7 +60,7 @@
   .mainDics{
     display: flex;
     justify-content: center;
-    margin: 20px;
+    margin: 20px 10px;
   }
 
   .wordAudio{
@@ -91,4 +89,46 @@
   border-radius: 5px;
   background: rgb(127, 231, 179);
   margin-bottom: 10px;
+}
+
+.userMsg{
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.infotext{
+  text-align: center;
+  color: grey;
+  font-family: monospace;
+}
+
+
+
+
+
+
+
+ /* media query for mobile size devices which width in 600px */
+ @media only screen and (max-width: 1100px) {
+  .searchBox{
+    height: 32px;
+    width: 80%;
+    padding: 5px 5px;
+    font-family: monospace;
+    border-radius: 5px 0px 0px 5px;
+    border: 1px solid grey;
+    border-right: none;
+  }
+
+  .wordDetails{
+    background: white;
+    width: 100%;
+    height: 67vh;
+    overflow: auto;
+    padding: 10px;
+  }
+
 }
