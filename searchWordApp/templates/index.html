@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>WordWar 0.1</title>
+    <title>Dictionary</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
 </head>
@@ -30,7 +30,7 @@
               </div>
               <form action="/searchWord" class="searchForm search-container" method="post">
                 {%csrf_token%}
-                  <input class="searchBox" type="text" placeholder="Enter your word.." name="wordTitle">
+                  <input class="searchBox" type="text" placeholder="Enter your word.." {% if wordDetail %} value="{{wordDetail.word}}" {% elif wordError%} value="{{wordError.word}}" {% else %} value="" {% endif %} name="wordTitle">
                   <button class="sub" type="submit"><i class="fa fa-search"></i></button>
               </form>
 
@@ -41,31 +41,39 @@
                     <div class="wordAudio">
                       <div class="WordSearchTitle">{{wordDetail.word}}</div>
                       {% for phoneticsData in wordDetail.phonetics%}
-                        <div><a href="{{phoneticsData.audio}}" target="_blank"><img src="{% static 'assets/sound.png' %}" alt="Trulli" width="20" height="20"></a></div>
-                    </div>
-                    <div style="color: grey;">{{phoneticsData.text}}</div>
+                        <!-- <div><a href="{{phoneticsData.audio}}" ><img src="{% static 'assets/sound.png' %}" alt="Trulli" width="20" height="20" onclick="play()"></a></div> -->
+                        <div><img id="wordSound" src="{% static 'assets/sound.png' %}" alt="Trulli" width="20" height="20" data-id="{{phoneticsData.audio}}"></div>
+                      {% endfor %}
+                      </div>
+                    {% for phoneticsData in wordDetail.phonetics%}
+                      <div style="color: grey;">{{phoneticsData.text}}</div>
                     {% endfor %}
                     <!-- meanings -->
                     <div style="margin-top: 10px;">
                       <!-- // for loop for part of speech -->
                       {% for defData in wordDetail.meanings%}
-                      <div>
-                        <div style="margin: 10px 0px;">
+                        {% if defData.partOfSpeech %}
+                        <div>
+                          <div style="margin: 10px 0px;">
                           <span class="partofspeech">{{defData.partOfSpeech}}</span>
                         </div>
-                        
+                        {% endif %}
                         {% for wordMeaningData in defData.definitions%}
                         <div class="definationBlock">
                           <!-- // for loop for defination -->
                           <!-- loop -->
+                          {% if wordMeaningData.definition %}
                           <div style="padding:5px 10px; background: rgb(127, 169, 231);margin: 10px 0px;">
                             <div>Definations:-</div>
                             <div>{{wordMeaningData.definition}}</div>
                           </div>
-                          <div style="padding:5px 10px; background: rgb(207, 127, 231);margin: 10px 0px;">
+                          {% endif %}
+                          {% if wordMeaningData.example %} 
+                          <div style="padding:5px 10px; background: rgb(207, 127, 231);margin: 10px 0px;">                           
                             <div>Expample:- </div>
-                          <div>{{wordMeaningData.example}}</div>
+                            <div>{{wordMeaningData.example}}</div>
                           </div>
+                          {% endif %}
                           
                           <!-- end loop -->
                         </div>

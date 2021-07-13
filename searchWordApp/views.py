@@ -20,10 +20,10 @@ def searchWord(request):
     try:
         response = urllib.request.urlopen(url)
         data = json.loads(response.read())
-        print(data)
+        # print(data)
         return render(request, "index.html", {"wordDetail": data[0]})
     except urllib.error.URLError as e:
-        print("enter valid data")
-        data = ["notFound"];
+        # print("enter valid data")
+        data = [{"word": word_id}];
         return render(request, "index.html", {"wordError": data[0]})
 
